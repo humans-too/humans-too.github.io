@@ -17,6 +17,7 @@ const { title, description = "" } = Astro.props;
 <html lang="en">
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
   </head>
   <body>
     <Header />
