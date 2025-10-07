@@ -1,0 +1,45 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+---
+
+<PageLayout title="Volunteer">
+  <Container>
+    <section class="space-y-4">
+      <h5 class="font-semibold text-black dark:text-white">Join the mission</h5>
+      <article>
+        <p>
+          We are a <b>volunteer run</b> group. If our work sounds like something
+          that interests you, get in touch by joining our <Link
+            href="https://discord.gg/puYWvHKF">Discord server</Link
+          >. Alternatively, you can <Link
+            href="mailto:safwansamsudeen@gmail.com">email</Link
+          > us.
+        </p>
+        <p>
+          Here are some ways you can help:
+          <ul>
+            <li>Mentor a child in need</li>
+            <li>Let us know that if your business is open to hiring.</li>
+            <li>
+              Join the team, working with us on anything from the website to
+              emergency support.
+            </li>
+          </ul>
+        </p>
+        <p>
+          We don't <b>directly accept donations</b>, but we can connect you with
+          children who need financial support.
+        </p>
+        <hr />
+        <p>
+          Join one of our <Link href="mailto:safwansamsudeen@gmail.com"
+            >meet ups</Link
+          > in Mumbai. Talk with our team, and figure out if you want to be a part
+          of this.
+        </p>
+      </article>
+    </section>
+  </Container>
+</PageLayout>

@@ -8,18 +8,22 @@ import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
+  .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf()
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
 const work = await Promise.all(
   allwork.map(async (item) => {
@@ -27,7 +31,6 @@ const work = await Promise.all(
     return { ...item, Content };
   })
 );
-
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -35,134 +38,158 @@ const work = await Promise.all(
     <h4 class="font-semibold text-black dark:text-white">
       Children are humans too.
     </h4>
-    <div class="space-y-16">
+    <div class="space-y-6">
       <section>
         <article class="space-y-4">
           <p>
-            We are a small group of volunteers working who believe in children's rights. </p>
+            We are a small group of volunteers working who believe in children's
+            rights.
+          </p>
           <p>
-            We help young people in problematic households by providing advice, resources, and support. 
+            We help young people in problematic households by providing
+            mentorship, resources, and support.
           </p>
         </article>
       </section>
 
-	  <section class="space-y-6">
+      <section class="space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
             Children have unalienable rights too
           </h5>
         </div>
-		<article class="space-y-4">
-       <p>You have the right to choose your career. You have the right to choose your religious and political beliefs without fear. You have the right to food, to medicine, to rest. You have the right to communicate with the external world.</p>
-	   <p>These aren't privileges. They aren't negotiable. They weren't given to you for them to be taken away. You have them because <em>you are human</em>.
-	   <p>We aren't just saying this - the United Nations Convention on Child Rights (see  <Link href="https://worldschildrensprize.org/downloads/teachers/UNCRC.pdf">a basic version here</Link>) is a legally binding international agreement and is the most widely ratified human rights treaty in history. Every country in the world, including India, pledged to ensure children have these rights.</p>
-
-	   </article>
+        <article class="space-y-4">
+          <p>
+            You have the right to choose your career. You have the right to
+            choose your religious and political beliefs without fear. You have
+            the right to food, to medicine, to rest. You have the right to
+            communicate with the external world.
+          </p>
+          <p>
+            These aren't privileges. They aren't negotiable. They weren't given
+            to you for them to be taken away. You have them because <em
+              >you are human</em
+            >.
+          </p>
+        </article>
       </section>
       <section class="space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            The practice is far from
+            The reality is far from these ideals.
           </h5>
         </div>
-		<article class="space-y-4">
-       <p>Even though India, </p>
-	   <p>These aren't privileges. They aren't negotiable. They weren't given to you for them to be taken away. You have them because <em>you are human</em>.
-	   <p>We aren't just saying this - the United Nations Convention on Child Rights is a legally binding international agreement and is the most widely ratified (= agreed upon) human rights treaty in history. You are _legally guaranteed_ these rights.</em>
-	   </article>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href="/get-help">
-            See all work
-          </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
-        <article>
+        <article class="space-y-4">
           <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
+            Goverments and societies across the world consistently fail
+            children. People consistently treat children as second-class
+            citizens.
           </p>
+          <p>We hope our work will change that a little bit.</p>
         </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
+
+        <!-- <section class="animate space-y-6">
+          <div class="flex flex-wrap gap-y-2 items-center justify-between">
+            <h5 class="font-semibold text-black dark:text-white">
+              Latest posts
+            </h5>
+            <Link href="/blog"> See all posts </Link>
+          </div>
+          <ul class="flex flex-col gap-4">
+            {
+              blog.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap gap-y-2 items-center justify-between">
+            <h5 class="font-semibold text-black dark:text-white">
+              Work Experience
+            </h5>
+            <Link href="/get-help"> See all work </Link>
+          </div>
+          <ul class="flex flex-col space-y-4">
+            {
+              work.map((entry) => (
+                <li>
+                  <div class="text-sm opacity-75">
+                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  </div>
+                  <div class="font-semibold text-black dark:text-white">
+                    {entry.data.company}
+                  </div>
+                  <div class="text-sm opacity-75">{entry.data.role}</div>
+                  <article>
+                    <entry.Content />
+                  </article>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap gap-y-2 items-center justify-between">
+            <h5 class="font-semibold text-black dark:text-white">
+              Recent projects
+            </h5>
+            <Link href="/projects"> See all projects </Link>
+          </div>
+          <ul class="flex flex-col gap-4">
+            {
+              projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section> -->
+
+        <section class="space-y-4">
+          <h5 class="font-semibold text-black dark:text-white">Get in touch</h5>
+          <article>
+            <p>
+              If you want to get in touch with us about something, or just to
+              say hi, join our <Link href="https://discord.gg/puYWvHKF"
+                >Discord</Link
+              >, or shoot <Link href="mailto:safwansamsudeen@gmail.com"
+                >us an email</Link
+              >.
+            </p>
+          </article>
+          <!--<ul class="flex flex-wrap gap-2">
+             {
+              SOCIALS.map((SOCIAL) => (
+                <li class="flex gap-x-2 text-nowrap">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                  {"/"}
+                </li>
+              ))
+            } 
+            <li class="line-clamp-1">
+              <Link
+                href={`mailto:${SITE.EMAIL}`}
+                aria-label={`Email ${SITE.NAME}`}
+              >
+                {SITE.EMAIL}
               </Link>
-              {"/"}
             </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li>
-        </ul>
+          </ul>
+          -->
+        </section>
       </section>
     </div>
-  </Container>
-</PageLayout>
+  </Container></PageLayout
+>
