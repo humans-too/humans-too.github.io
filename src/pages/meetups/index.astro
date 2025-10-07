@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { BLOG } from "@consts";
+
+const data = (await getCollection("meetups"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const posts = data;
+---
+
+<PageLayout title="Meet ups" description={BLOG.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <article>
+        <p>
+          We get together for the occasional meetup in Mumbai. Here are notes
+          from the past ones.
+        </p>
+        <p>
+          Our next meet up will happen on the <b
+            >Saturday, the 18th of October</b
+          >.
+        </p>
+      </article>
+      <div class="font-semibold text-black dark:text-white">Meets</div>
+      <div class="space-y-4">
+        <ul class="flex flex-col gap-4">
+          {
+            posts.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </Container>
+</PageLayout>
