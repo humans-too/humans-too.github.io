@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import { BLOG } from "@consts";
 
 const data = (await getCollection("meetups"))
   .filter((post) => !post.data.draft)
@@ -12,7 +11,7 @@ const data = (await getCollection("meetups"))
 const posts = data;
 ---
 
-<PageLayout title="Meet ups" description={BLOG.DESCRIPTION}>
+<PageLayout title="Meet ups">
   <Container>
     <div class="space-y-10">
       <article>

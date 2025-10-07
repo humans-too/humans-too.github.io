@@ -5,10 +5,11 @@ type Props = {
   href: string;
   external?: boolean;
   underline?: boolean;
+  nav?: boolean;
 };
 
-const { href, external, underline = true, ...rest } = Astro.props;
-const active = Astro.url.pathname === href;
+const { href, external, underline = true, nav = false, ...rest } = Astro.props;
+const active = nav && Astro.url.pathname.startsWith(href);
 ---
 
 <a

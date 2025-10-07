@@ -1,36 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
-import { SITE, HOME, SOCIALS } from "@consts";
-
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
-
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
-const allwork = (await getCollection("work"))
-  .sort(
-    (a, b) =>
-      new Date(b.data.dateStart).valueOf() -
-      new Date(a.data.dateStart).valueOf()
-  )
-  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
+import { HOME } from "@consts";
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -82,7 +54,7 @@ const work = await Promise.all(
         <article class="space-y-4">
           <p>
             Goverments and societies across the world consistently fail
-            children. People consistently treat children as second-class
+            children. Children are consistently treated as second-class
             citizens.
           </p>
           <p>We hope our work will change that a little bit.</p>
@@ -155,8 +127,13 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">Get in touch</h5>
           <article>
             <p>
-              If you want to get in touch with us about something, or just to
-              say hi, join our <Link href="https://discord.gg/puYWvHKF"
+              If you're a person in difficult circumstances, go <Link
+                href="/get-help">here</Link
+              >.
+            </p>
+            <p>
+              Want to get in touch with us about something else, or just to say
+              hi? Join our <Link href="https://discord.gg/puYWvHKF"
                 >Discord</Link
               >, or shoot <Link href="mailto:safwansamsudeen@gmail.com"
                 >us an email</Link

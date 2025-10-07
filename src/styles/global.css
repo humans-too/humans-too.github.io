@@ -43,6 +43,13 @@ article {
   @apply prose-headings:text-black prose-headings:dark:text-white;
 }
 
+article p,
+article li,
+article a,
+article blockquote {
+  @apply font-serif;
+}
+
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-2;
