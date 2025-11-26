@@ -1,0 +1,136 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+---
+
+<PageLayout
+  title="Starr Fund"
+  description="Financial support for young adults escaping abusive households"
+>
+  <div class="px-16 md:px-32 gap-8 h-full">
+    <h4 class="font-semibold text-black dark:text-white">The Starr Fund</h4>
+    <article>
+      <p>We help people who want to move out of problematic households.</p>
+    </article>
+    <div class="grid md:grid-cols-2 gap-12 mb-8 mt-8">
+      <!-- What we provide -->
+      <section class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          What we provide
+        </h5>
+        <article class="space-y-4">
+          <p>
+            We will cover <b>your living costs for three months</b> while you find
+            and secure employment. This includes <b
+              >rent, food, and all other essential expenses.</b
+            > This isn't a hard rule - each case is unique, and we will help you
+            in the best way we can.
+          </p>
+          <p>
+            The idea behind the fund is to facilitate the <em>transition</em> to
+            independent life. In these three months, we will help you find a job,
+            get settled, and build back stronger.
+          </p>
+        </article>
+      </section>
+
+      <!-- Who this is for -->
+      <section class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Who this is for
+        </h5>
+        <article class="space-y-4">
+          <p>
+            This fund is for people who are currently living in an abusive,
+            toxic, or otherwise problematic households and need <b
+              >support to leave</b
+            >. You must be atleast 18 years of age - unfortunately, we cannot
+            support minors due to restrictions in Indian law.
+          </p>
+          <p>
+            If you want to move out but stuck because you need money to escape
+            and can't earn money until you escape - <b
+              >this fund breaks that cycle.</b
+            >
+          </p>
+        </article>
+      </section>
+
+      <!-- How to apply -->
+      <section class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">How to apply</h5>
+        <article class="space-y-4">
+          <p>If you think you qualify for the fund,</p>
+          <ol>
+            <li>
+              Apply through <Link
+                href="https://airtable.com/app4dSFwgsBALddsd/paguUsfl9jxNvnsKC/form"
+                >the form</Link
+              >.
+            </li>
+            <li>
+              We will review your application and schedule an interview
+              <br />
+              Don't be intimidated. We're just trying to get a sense of who you are
+              and where you're coming from. We're here to support you, not to judge
+              you.
+            </li>
+            <li>We will get back to you</li>
+          </ol>
+          <p>We handle all inquiries with <b>complete confidentiality.</b></p>
+        </article>
+      </section>
+
+      <!-- Our commitment -->
+      <section class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          What we are looking for
+        </h5>
+        <article class="space-y-4">
+          <p>
+            The core question we ask is: <i
+              >"Can this person make it on their own if given a real chance?"</i
+            >. In your application, we look for signs of initiative, a drive for
+            independence, and a genuine commitment to building a life that is
+            <i>yours</i>.
+          </p>
+
+          <p>
+            This also means that if your application is accepted, it tells
+            something: we believe you can do this. A group of strangers analyzed
+            your situation and chose to bet on you, because we're confident that
+            you're capable of building the life you deserve.
+          </p>
+          <p>It is normal to be afraid, but don't let fear stifle you.</p>
+        </article>
+      </section>
+    </div>
+
+    <!-- Call to action - full width -->
+    <div class="border-t border-black/10 dark:border-white/25 pt-8">
+      <section class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Ready to take the next step?
+        </h5>
+        <article>
+          <p>
+            You deserve to live without fear. You deserve safety. You deserve to
+            be free from abuse.
+          </p>
+          <p>
+            Apply for <Link
+              href="https://airtable.com/app4dSFwgsBALddsd/paguUsfl9jxNvnsKC/form"
+              >the Starr Fund</Link
+            > today.
+          </p>
+          <small>
+            For any enquires, you can contact us on <Link
+              href="https://discord.gg/Ey4nnm7955">Discord</Link
+            > or via <Link href="mailto:safwansamsudeen@gmail.com">email</Link>.
+          </small>
+        </article>
+      </section>
+    </div>
+  </div>
+</PageLayout>

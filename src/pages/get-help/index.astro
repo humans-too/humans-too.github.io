@@ -1,8 +1,5 @@
 ---
-import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
 ---
 
 <PageLayout title="Get help">
@@ -13,11 +10,10 @@ import Link from "@components/Link.astro";
         <p>
           You can talk about your issues in this public forum - there are only
           friendly faces here!
-        </p><p>
-          Alternatively, you can submit a <Link href="/get-help/private"
-            >private request</Link
-          >.
         </p>
+        <small
+          >If you can't see a Discord embed on your screen, reload this page.</small
+        >
       </article>
     </div>
     <div class="h-full flex-1">
