@@ -7,12 +7,12 @@ import { SITE } from "@consts";
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
+      <Link href="/" underline={false} nav>
         <div class="font-semibold">
           {SITE.NAME}
         </div>
       </Link>
-      <nav class="flex gap-2">
+      <nav class="hidden md:flex gap-2">
         <Link href="/get-help" nav> support </Link>
 
         <span>
@@ -35,6 +35,29 @@ import { SITE } from "@consts";
         </span>
         <Link href="/blog"> Blog </Link> -->
       </nav>
+      <button
+        class="md:hidden p-2"
+        onclick="
+        const m = document.getElementById('mobile-menu');
+        m.classList.toggle('max-h-0');
+        m.classList.toggle('opacity-0');
+      "
+        aria-label="Toggle menu"
+      >
+        <div class="w-5 h-0.5 bg-current mb-1"></div>
+        <div class="w-5 h-0.5 bg-current mb-1"></div>
+        <div class="w-5 h-0.5 bg-current"></div>
+      </button>
+    </div>
+
+    <div
+      id="mobile-menu"
+      class="max-h-0 opacity-0 flex flex-col gap-2 mt-2 md:hidden transition-all duration-300 ease-out"
+    >
+      <Link href="/get-help" nav> support </Link>
+      <Link href="/starr-fund" nav> the Starr fund </Link>
+      <Link href="/volunteer" nav> volunteer </Link>
+      <Link href="/about" nav> about </Link>
     </div>
   </Container>
 </header>
